@@ -1,0 +1,35 @@
+version: 2
+
+models:
+  - name: d_coordinates
+    columns:
+      - name: CoordinateID
+        data_tests:
+          - unique
+          - not_null
+      - name: SpeedID
+        data_tests:
+          - relationships:
+              to: ref('f_speed')
+              field: SpeedID
+          - not_null
+
+  - name: d_date
+    columns:
+      - name: DateID
+        data_tests:
+          - unique
+          - not_null
+      - name: SpeedID
+        data_tests:
+          - relationships:
+              to: ref('f_speed')
+              field: SpeedID
+          - not_null
+
+  - name: f_speed
+    columns:
+      - name: SpeedID
+        data_tests:
+          - unique
+          - not_null
